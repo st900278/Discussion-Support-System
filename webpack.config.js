@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: `${__dirname}/result`,
+    path: path.resolve(__dirname, "build"),
     filename: 'bundle.js'
   },
   module: {
@@ -25,7 +25,10 @@ module.exports = {
   },
   resolve: {
     modules: [path.join(__dirname, 'src'), 'node_modules'],
-    extensions: ['.js']
+    extensions: ['.js'],
+    alias:{
+        'vue': 'vue/dist/vue.js'
+    }
   },
   plugins: []
 }
