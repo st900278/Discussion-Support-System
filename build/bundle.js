@@ -302,14 +302,24 @@ var _main2 = _interopRequireDefault(_main);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue2.default.use(_vuetify2.default);
-console.log(_main2.default);
 
 new _vue2.default({
-    el: '#app',
-    render: function render(h) {
-        return h(_main2.default);
+  el: '#app',
+  data: {
+    clipped: true,
+    drawer: true,
+    fixed: false,
+    items: [{ icon: 'bubble_chart', title: 'Inspire' }, { icon: 'bubble_chart', title: 'test' }],
+    miniVariant: false,
+    right: true,
+    rightDrawer: false,
+    title: 'Discussion Support System'
+    /*
+    render: createElement => {
+      return createElement(Template);
     }
-});
+    */
+  } });
 
 /***/ }),
 /* 3 */
@@ -28531,18 +28541,25 @@ module.exports = function normalizeComponent (
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data() {
     return {
-      clipped: false,
+      clipped: true,
       drawer: true,
       fixed: false,
-      items: [{ icon: 'bubble_chart', title: 'Inspire' }],
+      items: [{ icon: 'bubble_chart', title: 'Inspire' }, { icon: 'bubble_chart', title: 'test' }],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Discussion Support System'
     };
   }
 });
@@ -28616,15 +28633,6 @@ var render = function() {
         "v-toolbar",
         { attrs: { fixed: "", app: "", "clipped-left": _vm.clipped } },
         [
-          _c("v-toolbar-side-icon", {
-            on: {
-              click: function($event) {
-                $event.stopPropagation()
-                _vm.drawer = !_vm.drawer
-              }
-            }
-          }),
-          _vm._v(" "),
           _c(
             "v-btn",
             {
@@ -28645,36 +28653,6 @@ var render = function() {
                 }
               })
             ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            {
-              attrs: { icon: "" },
-              on: {
-                click: function($event) {
-                  $event.stopPropagation()
-                  _vm.clipped = !_vm.clipped
-                }
-              }
-            },
-            [_c("v-icon", [_vm._v("web")])],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            {
-              attrs: { icon: "" },
-              on: {
-                click: function($event) {
-                  $event.stopPropagation()
-                  _vm.fixed = !_vm.fixed
-                }
-              }
-            },
-            [_c("v-icon", [_vm._v("remove")])],
             1
           ),
           _vm._v(" "),
@@ -28710,28 +28688,83 @@ var render = function() {
             { attrs: { fluid: "" } },
             [
               _c(
-                "v-slide-y-transition",
-                { attrs: { mode: "out-in" } },
+                "div",
                 [
                   _c(
-                    "v-layout",
-                    { attrs: { column: "", "align-center": "" } },
+                    "v-breadcrumbs",
                     [
-                      _c("img", {
-                        staticClass: "mb-5",
-                        attrs: { src: "/public/v.png", alt: "Vuetify.js" }
-                      }),
+                      _c(
+                        "v-icon",
+                        { attrs: { slot: "divider" }, slot: "divider" },
+                        [_vm._v("chevron_right")]
+                      ),
                       _vm._v(" "),
-                      _c("blockquote", [
-                        _vm._v(
-                          "\n            “First, solve the problem. Then, write the code.”\n            "
-                        ),
-                        _c("footer", [
-                          _c("small", [_c("em", [_vm._v("—John Johnson")])])
-                        ])
-                      ])
-                    ]
+                      _vm._l(_vm.items, function(item) {
+                        return _c(
+                          "v-breadcrumbs-item",
+                          {
+                            key: item.text,
+                            attrs: { disabled: item.disabled }
+                          },
+                          [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(item.text) +
+                                "\n          "
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
                   )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-expansion-panel",
+                { attrs: { expand: "" } },
+                _vm._l(5, function(item, i) {
+                  return _c(
+                    "v-expansion-panel-content",
+                    { key: i, attrs: { value: item === 2 } },
+                    [
+                      _c("div", { attrs: { slot: "header" }, slot: "header" }, [
+                        _vm._v("Item")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card",
+                        [
+                          _c("v-card-text", { staticClass: "grey lighten-3" }, [
+                            _vm._v(
+                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                            )
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                })
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "text-xs-center" },
+                [
+                  _c("v-pagination", {
+                    attrs: { length: 6 },
+                    model: {
+                      value: _vm.page,
+                      callback: function($$v) {
+                        _vm.page = $$v
+                      },
+                      expression: "page"
+                    }
+                  })
                 ],
                 1
               )
@@ -28786,7 +28819,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("v-footer", { attrs: { fixed: _vm.fixed, app: "" } }, [
-        _c("span", [_vm._v("© 2017")])
+        _c("span", [_vm._v("Copyright © 2017 OberonFrog All rights reserved")])
       ])
     ],
     1
