@@ -28531,16 +28531,16 @@ if (false) {(function () {
             clipped: true,
             drawer: true,
             fixed: false,
-            items: [{
+            tabs: [{
                 icon: 'bubble_chart',
-                title: 'Inspire'
+                title: 'Super WhiteBoard'
             }, {
                 icon: 'bubble_chart',
                 title: 'test'
             }],
             levels: [{
                 name: "Home",
-                disabled: "True"
+                disabled: true
             }],
             miniVariant: false,
             right: true,
@@ -28628,14 +28628,7 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: () => {
     return {
-      clipped: true,
-      drawer: true,
-      fixed: false,
-      items: [{ icon: 'bubble_chart', title: 'Inspire' }, { icon: 'bubble_chart', title: 'test' }],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Discussion Support System'
+      items: [{ icon: 'bubble_chart', title: 'Inspire' }, { icon: 'bubble_chart', title: 'test' }]
     };
   }
 });
@@ -28655,7 +28648,7 @@ var render = function() {
       _c(
         "v-expansion-panel",
         { attrs: { expand: "" } },
-        _vm._l(5, function(item, i) {
+        _vm._l(_vm.items, function(item, i) {
           return _c(
             "v-expansion-panel-content",
             { key: i, attrs: { value: item === 2 } },
@@ -28734,7 +28727,7 @@ var render = function() {
         [
           _c(
             "v-list",
-            _vm._l(_vm.items, function(item, i) {
+            _vm._l(_vm.tabs, function(item, i) {
               return _c(
                 "v-list-tile",
                 { key: i, attrs: { value: "true" } },

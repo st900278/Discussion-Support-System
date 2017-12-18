@@ -2,7 +2,7 @@
 <v-app>
     <v-navigation-drawer fixed :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" app>
         <v-list>
-            <v-list-tile value="true" v-for="(item, i) in items" :key="i">
+            <v-list-tile value="true" v-for="(item, i) in tabs" :key="i">
                 <v-list-tile-action>
                     <v-icon v-html="item.icon"></v-icon>
                 </v-list-tile-action>
@@ -75,9 +75,9 @@ export default {
             clipped: true,
             drawer: true,
             fixed: false,
-            items: [{
+            tabs: [{
                     icon: 'bubble_chart',
-                    title: 'Inspire'
+                    title: 'Super WhiteBoard'
                 },
                 {
                     icon: 'bubble_chart',
@@ -86,7 +86,7 @@ export default {
             ],
             levels: [{
                 name: "Home",
-                disabled: "True"
+                disabled: true
             }],
             miniVariant: false,
             right: true,
